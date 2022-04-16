@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(https://html5book.ru/wp-content/uploads/2021/04/background_54.png)
+}
+
+.container {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+.topmenu {
+    background: #977763;
+}
+
+.topmenu a {
+    text-decoration: none;
+    display: block;
+    transition: .4s ease-in-out;
+}
+
+.topmenu>li>a {
+    font-size: 30px;
+    padding: 20px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Gentium Book Basic';
+}
+
+.topmenu li a:hover {
+    color: #c0a97a;
+    /*какой цвет?*/
+}
+
+.submenu li a {
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+    color: #484848;
+    font-family: 'Gentium Book Basic';
+}
+
+@media(min-width: 600px) {
+    .phone {
+        display: none;
+    }
+
+    .topmenu {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .topmenu>li {
+        position: relative;
+    }
+
+    .firstli {
+        margin-left: 40px;
+    }
+
+    .lastli {
+        margin-right: 40px;
+    }
+
+    .topmenu>li:after {
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 12px;
+        background: #d2d2d2;
+        top: 24px;
+        box-shadow: 4px -2px 0 #d2d2d2;
+        transform: rotate(30deg);
+    }
+
+    .topmenu>li:last-child:after {
+        background: none;
+        box-shadow: none;
+    }
+
+    .submenu {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 210px;
+        margin-left: -105px;
+        background: #fafafa;
+        border: 1px solid #ededed;
+        z-index: 5;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(.8);
+        transition: .4s ease-in-out;
+    }
+
+    .topmenu>li:hover .submenu {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .submenu li a {
+        text-align: center;
+        padding: 10px 0;
+        margin: 0 10px;
+    }
+}
+
+.nametitle {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+
+@media(max-width: 599px) {
+    .header {
+        display: none;
+    }
+
+    .nametitle{
+        display: none;
+    }
+
+    .phone {}
+
+    nav {
+        width: 100%;
+        background-color: #977763;
+        height: 65px;
+    }
+
+
+    #menuToggle {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-left: 10px;
+        top: 25px;
+        z-index: 1;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    #menuToggle input {
+        display: flex;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+    }
+
+    #menuToggle span {
+        display: flex;
+        width: 29px;
+        height: 2px;
+        margin-bottom: 5px;
+        position: relative;
+        background: #ffffff;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 5px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+            opacity 0.55s ease;
+    }
+
+    #menuToggle span:first-child {
+        transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2) {
+        transform-origin: 0% 100%;
+    }
+
+    #menuToggle input:checked~span {
+        opacity: 1;
+        transform: rotate(45deg) translate(-3px, -1px);
+        background: #36383F;
+    }
+
+    #menuToggle input:checked~span:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    #menuToggle input:checked~span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    #menu {
+        position: absolute;
+        width: 200px;
+        height: 600px;
+        box-shadow: 0 0 10px #85888C;
+        margin: -50px 0 0 -50px;
+        padding: 50px;
+        padding-top: 125px;
+        background-color: #F5F6FA;
+        -webkit-font-smoothing: antialiased;
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        transition: transform 0.5s ;
+    }
+
+    #menu li {
+        padding-bottom: 10px;
+        text-decoration: none; 
+        font-size: 20px;
+        padding-left: 10px;
+        transition-delay: 2s;
+    }
+
+    #menuToggle input:checked~ul {
+        transform: none;
+    }
+}
