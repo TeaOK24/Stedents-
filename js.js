@@ -1,33 +1,39 @@
-var burgerBtn = document.getElementById('burgerBtn');
-var mobile = document.getElementById('mobile');
-var demo1 = document.getElementById('demo1');
-var demo2 = document.getElementById('demo2');
-var demo3 = document.getElementById('demo3');
+/* Индекс слайда по умолчанию */
+var slideIndex = 1;
+showSlides(slideIndex);
 
-burgerBtn.addEventListener('click', function() {
-  mobile.classList.toggle('navigation');
-}, false);
+/* Функция увеличивает индекс на 1, показывает следующй слайд*/
+function plusSlide() {
+    showSlides(slideIndex += 1);
+}
 
-demo1.addEventListener('click', function() {
-  demo1.classList.add('active');
-  demo2.classList.remove('active');
-  demo3.classList.remove('active');
-  mobile.classList.add('demo1');
-  mobile.classList.remove('demo2', 'demo3', 'navigation');
-}, false);
+/* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+function minusSlide() {
+    showSlides(slideIndex -= 1);  
+}
 
-demo2.addEventListener('click', function() {
-  demo2.classList.add('active');
-  demo1.classList.remove('active');
-  demo3.classList.remove('active');
-  mobile.classList.add('demo2');
-  mobile.classList.remove('demo1', 'demo3', 'navigation');
-}, false);
+/* Устанавливает текущий слайд */
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
 
-demo3.addEventListener('click', function() {
-  demo3.classList.add('active');
-  demo1.classList.remove('active');
-  demo2.classList.remove('active');
-  mobile.classList.add('demo3');
-  mobile.classList.remove('demo1', 'demo2', 'navigation');
-}, false);
+/* Основная функция слайдера */
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("item");
+    var dots = document.getElementsByClassName("slider-dots_item");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+}
