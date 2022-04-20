@@ -133,6 +133,7 @@ ul {
         margin: auto;
         height: 300px;
         margin-bottom: 15px;
+        overflow: hidden;
     }
 
     /* Картинка мастабируется по отношению к родительскому элементу */
